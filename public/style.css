@@ -1,0 +1,207 @@
+.popup-content {
+  font-family: system-ui;
+  margin: auto;
+  padding: 5px 15px;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  font-size: 0.8rem;
+  border-radius: 2px;
+  box-shadow: 5px 5px 2px 2px #0000000f;
+  max-width: 300px;
+  -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards; }
+
+.popup-arrow {
+  color: #fff; }
+
+.popup-title {
+  padding: 4px 0px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  font-size: 12px;
+  color: #a1a1a1;
+  text-shadow: 0 0 0px black; }
+  .popup-title .range {
+    flex-grow: 1;
+    margin-right: 1rem; }
+
+.popup-body {
+  padding: 4px 0px; }
+
+.info-text {
+  color: #26A6E0;
+  font-size: 16px !important; }
+
+@keyframes anvil {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0; }
+  1% {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0; }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1; } }
+
+.sc-events {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent);
+  background-color: #ededed;
+  background-size: 1rem 1rem;
+  overflow: hidden; }
+  .sc-events .sc-row {
+    background: transparent; }
+    .sc-events .sc-row:hover {
+      background: #00000005;
+      transition: 0.4s; }
+
+.sc-event {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0px;
+  background-color: #d2f6d5;
+  color: #1b8d27;
+  padding: 5px 5px 5px 10px;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  height: 30px;
+  border-radius: 2px; }
+  .sc-event:hover {
+    transition: 0.3s;
+    box-shadow: 3px 3px 2px 2px #00000014;
+    z-index: 1000; }
+  .sc-event:active {
+    filter: grayscale(0.5); }
+  .sc-event::before {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 5px;
+    content: '';
+    height: 100%;
+    background: #00000026; }
+
+.sc-event-success {
+  color: #fff !important;
+  background: #22CF68 !important; }
+
+.sc-event-danger {
+  color: #fff !important;
+  background: #e53f2c !important; }
+
+.sc-event-default {
+  color: #fff !important;
+  background: #5191B7 !important; }
+
+.sc-event-info {
+  color: #fff !important;
+  background: #26A6E0 !important; }
+
+.sc-event-warning {
+  color: #fff !important;
+  background: #FFCF66 !important; }
+
+.sc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: system-ui;
+  font-size: 14px;
+  height: 100%;
+  overflow: hidden; }
+  .sc ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; }
+  .sc ::-webkit-scrollbar-track {
+    background: #fafafa; }
+  .sc ::-webkit-scrollbar-thumb {
+    background: #e5e5e5; }
+  .sc ::-webkit-scrollbar-thumb:hover {
+    background: #f1f1f1; }
+
+.sc-table {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  max-height: 100%;
+  height: fit-content;
+  width: fit-content;
+  max-width: 100%; }
+
+.sc-row {
+  display: table;
+  position: relative; }
+  .sc-row.active {
+    background-color: #f3f4f5; }
+  .sc-row.sc-header {
+    background-color: #f3f4f5;
+    width: 100%;
+    box-shadow: 0px 2px 5px #0000000f;
+    z-index: 102 !important; }
+    .sc-row.sc-header .sc-cell {
+      font-size: 12px;
+      white-space: pre-wrap;
+      color: #575757;
+      border-color: #e7e7e7; }
+
+.sc-body {
+  display: flex;
+  width: fit-content; }
+
+.sc-resources {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0px 5px #0000000f;
+  background: #fff;
+  z-index: 101 !important; }
+
+.sc-cell {
+  width: 90px;
+  min-width: 90px;
+  padding: 4px 0;
+  text-align: center;
+  display: table-cell;
+  border: 1px solid transparent;
+  border-top: 1px solid #e7e7e7;
+  min-height: 50px !important;
+  height: 40px;
+  vertical-align: middle;
+  font-size: 1em;
+  position: relative; }
+  .sc-cell:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    width: 100%;
+    height: 1000vh;
+    top: 50%;
+    margin-top: -500vh;
+    left: 0px;
+    background: #00000005;
+    transition: 0.4s; }
+  .sc-cell:hover:before {
+    opacity: 1; }
+  .sc-cell.working {
+    background: #ffffffa1; }
+
+.sc-resource {
+  min-width: 150px !important; }
+
+.sticky-y {
+  position: sticky !important;
+  position: -webkit-sticky;
+  top: 0px;
+  z-index: 100; }
+
+.sticky-x {
+  position: sticky !important;
+  position: -webkit-sticky;
+  left: 0px;
+  z-index: 100; }

@@ -6,12 +6,14 @@
   "scripts": {
     "build": "webpack --mode production --config webpack.config.js",
     "dev": "webpack --mode development --config webpack.config.js",
-    "watch": "webpack --mode development --config webpack.config.js --watch"
+    "watch": "webpack --mode development --config webpack.config.js --watch",
+    "compile:sass": "node-sass src/sass/scheduler.sass public/style.css"
   },
   "author": "Basil Tatarnikov",
   "license": "ISC",
   "dependencies": {
     "moment": "^2.29.1",
+    "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reactjs-popup": "^2.0.4"
