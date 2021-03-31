@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _moment = _interopRequireDefault(require("moment"));
 
-require("./sass/scheduler.sass");
-
 var _reactjsPopup = _interopRequireDefault(require("reactjs-popup"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

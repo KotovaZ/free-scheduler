@@ -1,6 +1,5 @@
 import React from "react";
 import Resource from "./resource";
-import "./sass/scheduler.sass";
 
 export default function Resources(props) {
   return (

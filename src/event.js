@@ -1,6 +1,5 @@
 import React from "react";
 import moment from "moment";
-import "./sass/scheduler.sass";
 import Popup from 'reactjs-popup';
 
 export default function Event(props) {

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Scheduler from "./scheduler";
+import "./src/sass/scheduler.sass";
 
 import * as demoData from "./demoData";
 ReactDOM.render(<Scheduler 

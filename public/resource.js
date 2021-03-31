@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./sass/scheduler.sass");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var Resource = /*#__PURE__*/_react["default"].forwardRef(function (props, ref) {

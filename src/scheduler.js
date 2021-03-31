@@ -2,7 +2,6 @@ import React from "react";
 import moment from "moment";
 import ResourceRow from "./resourceRow";
 import Resource from "./resource";
-import "./sass/scheduler.sass";
 
 export default function Scheduler(props) {
   const [sections, setSections] = React.useState([]);

@@ -13,8 +13,6 @@ var _event = _interopRequireDefault(require("./event"));
 
 var _resourceCells = _interopRequireDefault(require("./resourceCells"));
 
-require("./sass/scheduler.sass");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }

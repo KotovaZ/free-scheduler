@@ -8,6 +8,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _scheduler = _interopRequireDefault(require("./scheduler"));
 
+require("./src/sass/scheduler.sass");
+
 var demoData = _interopRequireWildcard(require("./demoData"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }

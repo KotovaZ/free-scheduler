@@ -2,7 +2,6 @@ import React from "react";
 import moment from "moment";
 import Event from "./event";
 import ResourceCells from "./resourceCells";
-import "./sass/scheduler.sass";
 
 export default function ResourceRow(props) {
   checkCollisions(props.events, props.resource, props.config);

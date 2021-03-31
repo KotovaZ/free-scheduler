@@ -1,5 +1,4 @@
 import React from "react";
-import "./sass/scheduler.sass";
 
 const Resource = React.forwardRef((props, ref) => {
   const view = props.hasOwnProperty('render') ? () => props.render(props) : defaultView;
