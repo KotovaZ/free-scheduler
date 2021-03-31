@@ -1,0 +1,47 @@
+@import "variables.sass"
+@import "mixins.sass"
+
+.sc-events
+  background-image: linear-gradient(45deg,rgba(255,255,255,.5) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.5) 50%,rgba(255,255,255,.5) 75%,transparent 75%,transparent)
+  background-color: #ededed
+  background-size: 1rem 1rem
+  overflow: hidden
+  .sc-row
+    background: transparent
+    &:hover
+      background: #00000005
+      transition: 0.4s
+
+.sc-event
+  @include border-box
+  position: absolute
+  left: 0px
+  background-color: #d2f6d5
+  color: #1b8d27
+  padding: 5px 5px 5px 10px
+  font-size: $text-md
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+  cursor: pointer
+  height: 30px
+  border-radius: 2px
+  &:hover
+    transition: 0.3s
+    box-shadow: 3px 3px 2px 2px #00000014
+    z-index: 1000
+  &:active
+    filter: grayscale(0.5)
+  &::before
+    position: absolute
+    left: 0px
+    top: 0px
+    width: 5px
+    content: ''
+    height: 100%
+    background: #00000026
+
+@each $name, $value in $palette
+  .sc-event-#{$name}
+    color: #fff !important
+    background: $value !important

@@ -48,12 +48,12 @@ export default function Event(props) {
         {...handlers}
       >
         <span>
-          {props.id} {props.name}
+          {props.name}
         </span>
       </div>
     );
   }
-
+  
   return (
     <Popup on='hover' trigger={eventForm} position={['bottom center', 'top center', 'bottom left']}>
       {popupTitle()}

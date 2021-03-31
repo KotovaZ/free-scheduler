@@ -1,265 +1,8 @@
-export const resources = [
-  /*{ id: 'r1', name: 'Mike' },
-  { id: 'r2', name: 'Linda' },
-  { id: 'r3', name: 'Lisa' },
-  { id: 'r4', name: 'Madison' },
-  { id: 'r5', name: 'Mark' },
-  { id: 'r6', name: 'Kate' },
-  { id: 'r7', name: 'Dan' },
-  { id: 'r8', name: 'Henrik' },
-  { id: 'r9', name: 'Rob' },
-  { id: 'r10', name: 'Gloria' },*/
-
-  {
-    "id": "3",
-    "name": "Татарников Василий",
-    "img": "/upload/resize_cache/main/35c/50_50_2/1494592816133830021.jpg",
-  },
-  {
-    "id": "12",
-    "name": "Сазонов Даниил",
-    "img": "/desktop/img/person.png"
-  },
-  {
-    "id": "13",
-    "name": "Кашевская Анна",
-    "img": "/desktop/img/person.png"
-  },
-  {
-    "id": "17",
-    "name": "Воскобоева Дарья",
-    "img": "/desktop/img/person.png"
-  },
-  {
-    "id": "18",
-    "name": "Аксёнова Галина",
-    "img": "/desktop/img/person.png"
-  },
-  {
-    "id": "21",
-    "name": "Кузнецов Александр",
-    "img": "/desktop/img/person.png"
-  },
-  {
-    "id": "55",
-    "name": "Патырило Станислав",
-    "img": "/desktop/img/person.png"
-  },
-  {
-    "id": "56",
-    "name": "Гатапов Виктор",
-    "img": "/desktop/img/person.png"
-  },
-  {
-    "id": "57",
-    "name": "Макаров Кирилл",
-    "img": "/desktop/img/person.png"
-  },
-  {
-    "id": "59",
-    "name": "Костюченко Дарья",
-    "img": "/upload/resize_cache/main/738/50_50_2/pwa_vertical_1024_2d15bdc3a3b0ae1a2308e91990187e78.jpg"
-  }
-
-];
-
-export const events = [/*
-  {
-    id: 1,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 10:00:00'),
-    finish: new Date('2021-03-26 14:20:00'),
-    name: 'Investigation',
-    iconCls: 'b-fa b-fa-search'
-  }, {
-    id: 2,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 13:10:00'),
-    finish: new Date('2021-03-26 18:00:00'),
-    name: 'Brief',
-    iconCls: 'b-fa b-fa-newspaper'
-  },
-  {
-    id: 3,
-    resourceId: 'r1',
-    start: new Date('2021-03-27 12:00:00'),
-    finish: Date('2021-03-27 13:14:00'),
-    name: 'Scrum',
-    iconCls: 'b-fa b-fa-bullhorn'
-  },
-  {
-    id: 4,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 18:00:00'),
-    finish: new Date('2021-03-26 19:30:00'),
-    name: 'Scrum',
-    iconCls: 'b-fa b-fa-bullhorn'
-  },
-  {
-    id: 5,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 12:30:00'),
-    finish: new Date('2021-03-26 14:00:00'),
-    name: 'Meeting',
-    iconCls: 'b-fa b-fa-calfinishar'
-  },
-  {
-    id: 6,
-    resourceId: 'r1',
-    start: new Date('2021-03-27 08:00:00'),
-    finish: new Date('2021-03-27 09:35:00'),
-    name: 'Meeting',
-    iconCls: 'b-fa b-fa-calfinishar',
-    eventColor: 'blue'
-  },
-  {
-    id: 32,
-    resourceId: 'r1',
-    start: new Date('2021-03-27 12:00:00'),
-    finish: Date('2021-03-27 13:14:00'),
-    name: 'Scrum',
-    iconCls: 'b-fa b-fa-bullhorn'
-  },
-  {
-    id: 42,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 19:00:00'),
-    finish: new Date('2021-03-26 19:30:00'),
-    name: 'Scrum',
-    iconCls: 'b-fa b-fa-bullhorn'
-  },
-  {
-    id: 52,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 12:30:00'),
-    finish: new Date('2021-03-26 14:00:00'),
-    name: 'Meeting',
-    iconCls: 'b-fa b-fa-calfinishar'
-  },
-  {
-    id: 62,
-    resourceId: 'r1',
-    start: new Date('2021-03-27 08:00:00'),
-    finish: new Date('2021-03-27 09:35:00'),
-    name: 'Meeting',
-    iconCls: 'b-fa b-fa-calfinishar',
-    eventColor: 'blue'
-  },
-
-
-
-  ////////
-  {
-    id: 11,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 10:00:00'),
-    finish: new Date('2021-03-26 14:20:00'),
-    name: 'Investigation',
-    iconCls: 'b-fa b-fa-search'
-  }, {
-    id: 21,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 13:10:00'),
-    finish: new Date('2021-03-26 18:00:00'),
-    name: 'Brief',
-    iconCls: 'b-fa b-fa-newspaper'
-  },
-  {
-    id: 311,
-    resourceId: 'r1',
-    start: new Date('2021-03-27 12:00:00'),
-    finish: Date('2021-03-27 13:14:00'),
-    name: 'Scrum',
-    iconCls: 'b-fa b-fa-bullhorn'
-  },
-  {
-    id: 411,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 19:00:00'),
-    finish: new Date('2021-03-26 19:30:00'),
-    name: 'Scrum',
-    iconCls: 'b-fa b-fa-bullhorn'
-  },
-  {
-    id: 511,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 12:30:00'),
-    finish: new Date('2021-03-26 14:00:00'),
-    name: 'Meeting',
-    iconCls: 'b-fa b-fa-calfinishar'
-  },
-  {
-    id: 611,
-    resourceId: 'r1',
-    start: new Date('2021-03-27 08:00:00'),
-    finish: new Date('2021-03-27 09:35:00'),
-    name: 'Meeting',
-    iconCls: 'b-fa b-fa-calfinishar',
-    eventColor: 'blue'
-  },
-  {
-    id: 31,
-    resourceId: 'r1',
-    start: new Date('2021-03-27 12:00:00'),
-    finish: Date('2021-03-27 13:14:00'),
-    name: 'Scrum',
-    iconCls: 'b-fa b-fa-bullhorn'
-  },
-  {
-    id: 41,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 17:00:00'),
-    finish: new Date('2021-03-26 19:30:00'),
-    name: 'Scrum',
-    iconCls: 'b-fa b-fa-bullhorn'
-  },
-  {
-    id: 51,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 12:30:00'),
-    finish: new Date('2021-03-26 14:00:00'),
-    name: 'Meeting',
-    iconCls: 'b-fa b-fa-calfinishar'
-  },
-  {
-    id: 61,
-    resourceId: 'r1',
-    start: new Date('2021-03-27 08:00:00'),
-    finish: new Date('2021-03-27 09:35:00'),
-    name: 'Meeting',
-    iconCls: 'b-fa b-fa-calfinishar',
-    eventColor: 'blue'
-  },
-  {
-    id: 5111,
-    resourceId: 'r1',
-    start: new Date('2021-03-25 00:00:00'),
-    finish: new Date('2021-03-26 18:45:00'),
-    name: 'Meeting 2',
-    iconCls: 'b-fa b-fa-calfinishar'
-  },
-  {
-    id: 5112,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 15:00:00'),
-    finish: new Date('2021-03-26 16:30:00'),
-    name: 'Meeting 3',
-    iconCls: 'b-fa b-fa-calfinishar'
-  },
-  {
-    id: 5113,
-    resourceId: 'r1',
-    start: new Date('2021-03-26 14:30:00'),
-    finish: new Date('2021-03-26 16:00:00'),
-    name: 'Meeting 4',
-    iconCls: 'b-fa b-fa-calfinishar'
-  },
-
-*/
+export const events = [
   {
     "resourceId": "3",
     "id": "651231",
-    "name": "test",
+    "name": "Дежурство",
     "start": "2020-01-10T09:00:00+08:00",
     "finish": "2020-01-10T10:00:00+08:00",
     "type": "warning",
@@ -269,9 +12,9 @@ export const events = [/*
     }
   },
   {
-    "resourceId": "3",
+    "resourceId": "17",
     "id": "65",
-    "name": "test",
+    "name": "Дежурство",
     "start": "2020-01-09T09:00:00+08:00",
     "finish": "2020-01-09T18:00:00+08:00",
     "type": "default",
@@ -351,7 +94,7 @@ export const events = [/*
       "PRIORITY": null,
       "STATUS": null
     },
-    'onClick': (e) => {console.log(e);}
+    'onClick': (e) => { console.log(e); }
   },
   {
     "resourceId": "21",
@@ -563,7 +306,7 @@ export const events = [/*
     "name": "CRM: Обращение № 875",
     "start": "2020-01-09T11:04:26+08:00",
     "finish": "2020-01-09T12:04:26+08:00",
-    "type": "success",
+    "type": "danger",
     "DATA": {
       "PRIORITY": null,
       "STATUS": null
@@ -683,7 +426,7 @@ export const events = [/*
     "name": "CRM: Обращение № 913",
     "start": "2020-01-09T14:08:46+08:00",
     "finish": "2020-01-09T15:08:46+08:00",
-    "type": "success",
+    "type": "warning",
     "DATA": {
       "PRIORITY": null,
       "STATUS": null
@@ -2074,8 +1817,8 @@ export const events = [/*
     "id": "1279",
     "name": "CRM: Обращение № 1337",
     "start": "2020-01-13T18:03:12+08:00",
-    "finish": "2020-01-13T19:03:12+08:00",
-    "type": "success",
+    "finish": "2020-01-14T19:03:12+08:00",
+    "type": "danger",
     "DATA": {
       "PRIORITY": null,
       "STATUS": null
@@ -2095,3 +1838,84 @@ export const events = [/*
   }
 
 ];
+
+export const resources = [
+  {
+    "id": "3",
+    "name": "Татарников Василий",
+    "img": "/upload/resize_cache/main/35c/50_50_2/1494592816133830021.jpg",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 3)
+  },
+  {
+    "id": "12",
+    "name": "Сазонов Даниил",
+    "img": "/desktop/img/person.png",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 12)
+  },
+  {
+    "id": "13",
+    "name": "Кашевская Анна",
+    "img": "/desktop/img/person.png",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 13)
+  },
+  {
+    "id": "17",
+    "name": "Воскобоева Дарья",
+    "img": "/desktop/img/person.png",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 17)
+  },
+  {
+    "id": "18",
+    "name": "Аксёнова Галина",
+    "img": "/desktop/img/person.png",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 18)
+  },
+  {
+    "id": "21",
+    "name": "Кузнецов Александр",
+    "img": "/desktop/img/person.png",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 21)
+  },
+  {
+    "id": "55",
+    "name": "Патырило Станислав",
+    "img": "/desktop/img/person.png",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 55)
+  },
+  {
+    "id": "56",
+    "name": "Гатапов Виктор",
+    "img": "/desktop/img/person.png",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 56)
+  },
+  {
+    "id": "57",
+    "name": "Макаров Кирилл",
+    "img": "/desktop/img/person.png",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 57)
+  },
+  {
+    "id": "59",
+    "name": "Костюченко Дарья",
+    "img": "/upload/resize_cache/main/738/50_50_2/pwa_vertical_1024_2d15bdc3a3b0ae1a2308e91990187e78.jpg",
+    "checkWorkingTime": (section) => checkWorkingTime(section, 59)
+  }
+];
+
+function checkWorkingTime (section, resId) {
+  let eventList = events.filter(event => event.type == 'default' && event.resourceId == resId);
+  const sectionDate = section.map(date => date.getTime());
+  for(let event of eventList) {
+    const eventStart = (new Date(event.start)).getTime();
+    const eventFinish = (new Date(event.finish)).getTime();
+    
+    if (
+      (eventStart >= sectionDate[0] && eventStart < sectionDate[1]) ||
+      (eventFinish > sectionDate[0] && eventFinish < sectionDate[1]) ||
+      (eventStart < sectionDate[0] && eventFinish >= sectionDate[1])
+    ) {
+      return true
+    }
+  }
+  return false;
+}

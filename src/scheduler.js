@@ -5,11 +5,10 @@ import Resource from "./resource";
 import "./sass/scheduler.sass";
 
 export default function Scheduler(props) {
-  const [marks, setMarks] = React.useState([]);
+  const [sections, setSections] = React.useState([]);
   const [resources, setResources] = React.useState(
     initResources(props.resources)
   );
-  const interval = 3600000;
 
   function initResources(resources) {
     return resources.map(function (res) {
@@ -23,20 +22,24 @@ export default function Scheduler(props) {
   }
 
   React.useEffect(() => {
-    const steps = Math.ceil((props.config.end - props.config.start) / 3600000);
+    const steps = Math.ceil((props.config.end - props.config.start) / props.config.interval);
     let result = [];
     let startPoint = props.config.start.getTime();
     for (let i = 0; i < steps; i++) {
-      result.push(new Date(startPoint + interval * i));
+      result.push([new Date(startPoint + props.config.interval * i), new Date(startPoint + props.config.interval * (i + 1))]);
     }
-    setMarks(result);
+    setSections(result);
   }, [props.config.end, props.config.start]);
 
+  React.useEffect(() => {
+    setResources(props.resources);
+  }, [props.resources]);
+
   const header = () => {
-    return marks.map((mark, i) => {
+    return sections.map((section, i) => {
       return (
         <div key={`column_${i}`} className="sc-cell">
-          <span>{moment(mark).format("DD.MM HH:mm").replace(" ", "\n")}</span>
+          <span>{moment(section[0]).format("DD.MM HH:mm").replace(" ", "\n")}</span>
         </div>
       );
     });
@@ -51,7 +54,7 @@ export default function Scheduler(props) {
           events={props.events.filter(
             (event) => event.resourceId === resource.id
           )}
-          marks={marks}
+          sections={sections}
           config={props.config}
         />
       );
@@ -65,17 +68,15 @@ export default function Scheduler(props) {
   return (
     <div className="sc">
       <div className="sc-table">
-        <div className="sc-timeline">
-          <div className="sc-row sc-header sticky-y">
-            <div className="sc-cell sc-resource">
-              <span>Пользователь</span>
-            </div>
-            {header()}
+        <div className="sc-row sc-header sticky-y">
+          <div className="sc-cell sc-resource">
+            <span>Пользователь</span>
           </div>
-          <div className="sc-body">
-            <div className="sc-resources sticky-x">{resourceList()}</div>
-            <div className="sc-events">{body()}</div>
-          </div>
+          {header()}
+        </div>
+        <div className="sc-body">
+          <div className="sc-resources sticky-x">{resourceList()}</div>
+          <div className="sc-events">{body()}</div>
         </div>
       </div>
     </div>

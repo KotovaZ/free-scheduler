@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import Event from "./event";
+import ResourceCells from "./resourceCells";
 import "./sass/scheduler.sass";
 
 export default function ResourceRow(props) {
@@ -13,11 +14,7 @@ export default function ResourceRow(props) {
       key={`rr_${props.resource.id}`}
       style={{ height: `${props.resource.view.height}px` }}
     >
-      {props.marks.map((mark, i) => {
-        return (
-          <div key={`cell_${props.resource.id}_${i}`} className="sc-cell"></div>
-        );
-      })}
+      <ResourceCells items={props.sections} resource={props.resource} config={props.config}/>
 
       {props.events.sort(sortEvents).map((event) => {
         return <Event key={`event_${event.id}`} {...event} />;
@@ -39,8 +36,8 @@ function checkCollisions(events, resource, config) {
 
   if (!events.length) return 0;
 
-  events.forEach((element) => {
-    element.collision = [];
+  events.forEach((event) => {
+    event.collision = [];
   });
 
   events.forEach((event) => {
@@ -70,10 +67,8 @@ function checkCollisions(events, resource, config) {
     let eStart =
       config.end - (event.start < config.start ? config.start : event.start);
 
-    event.start =
-      typeof event.start == "string" ? new Date(event.start) : event.start;
-    event.finish =
-      typeof event.finish == "string" ? new Date(event.finish) : event.finish;
+    event.start = getEventDate(event.start);
+    event.finish = getEventDate(event.finish);
     event.position = {
       left: 100 - (eStart * 100) / period,
       top: 0,
@@ -127,14 +122,18 @@ function checkCollisions(events, resource, config) {
     resource.view.height =
       event.row > resource.view.height ? event.row : resource.view.height;
     event.view.width =
-      ((event.finish -
+      (((event.finish > config.end ? config.end : event.finish) -
         (event.start < config.start ? config.start : event.start)) *
         100) /
-        period;
+      period;
   });
 
   resource.view.height = (resource.view.height + 1) * 35;
   resource.view.height = resource.view.height < 50 ? 50 : resource.view.height;
   if (resource.ref.current)
     resource.ref.current.style.height = `${resource.view.height}px`;
+}
+
+const getEventDate = (dt) => {
+  return typeof dt == "string" ? new Date(dt) : dt;
 }

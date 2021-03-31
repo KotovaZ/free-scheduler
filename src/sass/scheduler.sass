@@ -1,12 +1,15 @@
 @import "variables.sass"
 @import "mixins.sass"
 @import "popup.sass"
+@import "event.sass"
 .sc
   display: flex
   flex-direction: column
   width: 100%
   font-family: $default-font-family
   font-size: $text-md
+  height: 100%
+  overflow: hidden
   ::-webkit-scrollbar
     width: 8px
     height: 8px
@@ -19,13 +22,17 @@
 
 .sc-table
   display: flex
+  flex-direction: column
   overflow: scroll
-  max-height: 95vh
+  max-height: 100%
   height: fit-content
-  width: 99vw
+  width: fit-content
+  max-width: 100%
 .sc-row
   display: table
   position: relative
+  &.active
+    background-color: $grey-100
   &.sc-header
     background-color: $grey-100
     width: 100%
@@ -39,6 +46,7 @@
 
 .sc-body
   display: flex
+  width: fit-content
 
 .sc-resources
   display: flex
@@ -53,42 +61,31 @@
   padding: $space-1 0
   text-align: center
   display: table-cell
-  border: 1px solid $border-color
+  border: 1px solid transparent
+  border-top: 1px solid $grey-300
   min-height: 50px !important
   height: 40px
   vertical-align: middle
   font-size: 1em
-
-.sc-events
-  background-image: linear-gradient(45deg,rgba(255,255,255,.5) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.5) 50%,rgba(255,255,255,.5) 75%,transparent 75%,transparent)
-  background-color: #e9e9ea
-  background-size: 1rem 1rem
-
-.sc-event
-  @include border-box
-  position: absolute
-  left: 0px
-  background-color: #d2f6d5
-  color: #1b8d27
-  padding: 5px
-  font-size: $text-md
-  white-space: nowrap
-  text-overflow: ellipsis
-  overflow: hidden
-  cursor: pointer
-  height: 30px
-  border-radius: 2px
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    z-index: 0
+    pointer-events: none
+    opacity: 0
+    width: 100%
+    height: 1000vh
+    top: 50%
+    margin-top: -500vh
+    left: 0px
+    background: #00000005
+    transition: 0.4s
   &:hover
-    transition: 0.3s
-    box-shadow: 3px 3px 2px 2px #00000014
-    z-index: 1000
-  &:active
-    filter: grayscale(0.5)
-
-@each $name, $value in $palette
-  .sc-event-#{$name}
-    color: #fff !important
-    background: $value !important
+    &:before
+      opacity: 1
+  &.working
+    background: #ffffffa1
 
 .sc-resource
   min-width: 150px !important
