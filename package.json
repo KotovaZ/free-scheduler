@@ -7,7 +7,8 @@
     "build": "webpack --mode production --config webpack.config.js",
     "dev": "webpack --mode development --config webpack.config.js",
     "watch": "webpack --mode development --config webpack.config.js --watch",
-    "compile:sass": "node-sass src/sass/scheduler.sass public/style.css"
+    "compile:sass": "node-sass src/sass/scheduler.sass public/style.css",
+    "compile:js": "npx babel src --out-dir public"
   },
   "author": "Basil Tatarnikov",
   "license": "ISC",
