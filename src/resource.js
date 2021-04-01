@@ -1,7 +1,15 @@
 import React from "react";
 
-const Resource = React.forwardRef((props, ref) => {
+const Resource = (props) => {
   const view = props.hasOwnProperty('render') ? () => props.render(props) : defaultView;
+  let ref;
+  if (props.ref == null) {
+    ref = React.useRef();
+    props.setRef(ref);
+  } else {
+    ref = props.ref;
+  }
+
   function defaultView() {
     return (<span className="sc-resource-title">{props.name}</span>);
   }
@@ -13,6 +21,6 @@ const Resource = React.forwardRef((props, ref) => {
       </div>
     </div>
   );
-});
+};
 
 export default Resource;

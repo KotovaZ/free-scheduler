@@ -30,31 +30,39 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Scheduler(props) {
+  var res = initResources(props.resources);
+
   var _React$useState = _react["default"].useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       sections = _React$useState2[0],
       setSections = _React$useState2[1];
 
-  var _React$useState3 = _react["default"].useState(initResources(props.resources)),
+  var _React$useState3 = _react["default"].useState(res),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       resources = _React$useState4[0],
       setResources = _React$useState4[1];
 
-  function initResources(resources) {
-    return resources.map(function (res) {
-      res.ref = _react["default"].useRef();
-      res.base = /*#__PURE__*/_react["default"].createElement(_resource["default"], _extends({
-        key: "".concat(res.id)
-      }, res, {
-        ref: res.ref
-      }));
-
-      res.setHeight = function (height) {
-        this.height = height;
-      };
-
-      return res;
+  function initResources() {
+    return props.resources.map(function (res) {
+      return new ResourceData(res);
     });
+  }
+
+  function ResourceData(res) {
+    var _this = this;
+
+    Object.assign(this, res);
+
+    this.setRef = function (ref) {
+      _this.ref = ref;
+    };
+
+    this.base = /*#__PURE__*/_react["default"].createElement(_resource["default"], _extends({
+      key: "".concat(res.id)
+    }, res, {
+      setRef: this.setRef
+    }));
+    return this;
   }
 
   _react["default"].useEffect(function () {
@@ -70,7 +78,8 @@ function Scheduler(props) {
   }, [props.config.end, props.config.start]);
 
   _react["default"].useEffect(function () {
-    setResources(props.resources);
+    var res = initResources(props.resources);
+    setResources(res);
   }, [props.resources]);
 
   var header = function header() {

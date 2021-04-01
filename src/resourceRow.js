@@ -129,8 +129,10 @@ function checkCollisions(events, resource, config) {
 
   resource.view.height = (resource.view.height + 1) * 35;
   resource.view.height = resource.view.height < 50 ? 50 : resource.view.height;
+  //console.log(resource);
+  //resource.setHeight(`${resource.view.height}px`);
   if (resource.ref.current)
-    resource.ref.current.style.height = `${resource.view.height}px`;
+    resource.ref.current.style.height = `${resource.view.height}px`
 }
 
 const getEventDate = (dt) => {

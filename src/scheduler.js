@@ -4,20 +4,23 @@ import ResourceRow from "./resourceRow";
 import Resource from "./resource";
 
 export default function Scheduler(props) {
+  let res = initResources(props.resources);
   const [sections, setSections] = React.useState([]);
-  const [resources, setResources] = React.useState(
-    initResources(props.resources)
-  );
+  const [resources, setResources] = React.useState(res);
 
-  function initResources(resources) {
-    return resources.map(function (res) {
-      res.ref = React.useRef();
-      res.base = <Resource key={`${res.id}`} {...res} ref={res.ref} />;
-      res.setHeight = function (height) {
-        this.height = height;
-      };
-      return res;
+  function initResources() {
+    return props.resources.map(function (res) {
+      return new ResourceData(res)
     });
+  }
+
+  function ResourceData(res) {
+    Object.assign(this, res)
+    this.setRef = (ref) => {
+      this.ref = ref;
+    }
+    this.base = <Resource key={`${res.id}`} {...res} setRef={this.setRef} />;
+    return this;
   }
 
   React.useEffect(() => {
@@ -31,7 +34,8 @@ export default function Scheduler(props) {
   }, [props.config.end, props.config.start]);
 
   React.useEffect(() => {
-    setResources(props.resources);
+    let res = initResources(props.resources);
+    setResources(res);
   }, [props.resources]);
 
   const header = () => {

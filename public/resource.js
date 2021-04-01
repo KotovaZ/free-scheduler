@@ -9,10 +9,18 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var Resource = /*#__PURE__*/_react["default"].forwardRef(function (props, ref) {
+var Resource = function Resource(props) {
   var view = props.hasOwnProperty('render') ? function () {
     return props.render(props);
   } : defaultView;
+  var ref;
+
+  if (props.ref == null) {
+    ref = _react["default"].useRef();
+    props.setRef(ref);
+  } else {
+    ref = props.ref;
+  }
 
   function defaultView() {
     return /*#__PURE__*/_react["default"].createElement("span", {
@@ -29,7 +37,7 @@ var Resource = /*#__PURE__*/_react["default"].forwardRef(function (props, ref) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "sc-cell sc-resource"
   }, view()));
-});
+};
 
 var _default = Resource;
 exports["default"] = _default;

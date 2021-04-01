@@ -1839,7 +1839,7 @@ export const events = [
 
 ];
 
-export const resources = [
+export let resources = [
   {
     "id": "3",
     "name": "Татарников Василий",
