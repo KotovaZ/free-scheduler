@@ -23,8 +23,17 @@ export default function ResourceRow(props) {
 
 let sortEvents = (a, b) => {
   const diff = a.start - b.start;
-  const diff2 = a.finish - b.finish;
-  return diff == 0 ? (diff2 > 0 ? 1 : -1) : diff > 0 ? 1 : -1;
+  if (diff == 0) {
+    const diff2 = b.finish - a.finish;
+    if (diff2 == 0) {
+      const diff3 = a.id - b.id;
+      return diff3 > 0 ? 1 : -1
+    } else {
+      return diff2 > 0 ? 1 : -1;
+    }
+  } else {
+    return diff > 0 ? 1 : -1;
+  }
 };
 
 function checkCollisions(events, resource, config) {
