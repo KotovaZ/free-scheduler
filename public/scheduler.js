@@ -60,7 +60,8 @@ function Scheduler(props) {
     this.base = /*#__PURE__*/_react["default"].createElement(_resource["default"], _extends({
       key: "".concat(res.id)
     }, res, {
-      setRef: this.setRef
+      setRef: this.setRef,
+      config: props.config.resource
     }));
     return this;
   }
@@ -118,8 +119,11 @@ function Scheduler(props) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "sc-row sc-header sticky-y"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "sc-cell sc-resource"
-  }, /*#__PURE__*/_react["default"].createElement("span", null, "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C")), header()), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "sc-cell sc-resource",
+    style: {
+      minWidth: props.config.resource.width
+    }
+  }, /*#__PURE__*/_react["default"].createElement("span", null, props.config.resource.title)), header()), /*#__PURE__*/_react["default"].createElement("div", {
     className: "sc-body"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "sc-resources sticky-x"

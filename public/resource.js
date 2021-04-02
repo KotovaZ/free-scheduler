@@ -31,7 +31,8 @@ var Resource = function Resource(props) {
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "sc-row",
     style: {
-      height: props.height
+      height: props.height,
+      width: props.config.width
     },
     ref: ref
   }, /*#__PURE__*/_react["default"].createElement("div", {

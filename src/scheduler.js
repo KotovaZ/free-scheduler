@@ -19,7 +19,7 @@ export default function Scheduler(props) {
     this.setRef = (ref) => {
       this.ref = ref;
     }
-    this.base = <Resource key={`${res.id}`} {...res} setRef={this.setRef} />;
+    this.base = <Resource key={`${res.id}`} {...res} setRef={this.setRef} config={props.config.resource} />;
     return this;
   }
 
@@ -72,8 +72,8 @@ export default function Scheduler(props) {
     <div className="sc">
       <div className="sc-table">
         <div className="sc-row sc-header sticky-y">
-          <div className="sc-cell sc-resource">
-            <span>Пользователь</span>
+          <div className="sc-cell sc-resource" style={{ minWidth: props.config.resource.width }}>
+            <span>{props.config.resource.title}</span>
           </div>
           {header()}
         </div>

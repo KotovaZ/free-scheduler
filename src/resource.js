@@ -3,6 +3,7 @@ import React from "react";
 const Resource = (props) => {
   const view = props.hasOwnProperty('render') ? () => props.render(props) : defaultView;
   let ref;
+
   if (props.ref == null) {
     ref = React.useRef();
     props.setRef(ref);
@@ -15,7 +16,7 @@ const Resource = (props) => {
   }
 
   return (
-    <div className="sc-row" style={{ height: props.height }} ref={ref}>
+    <div className="sc-row" style={{ height: props.height, width: props.config.width }} ref={ref}>
       <div className="sc-cell sc-resource">
         {view()}
       </div>

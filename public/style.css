@@ -52,7 +52,7 @@
   .sc-events .sc-row {
     background: transparent; }
     .sc-events .sc-row:hover {
-      background: #00000005;
+      background: #00000007;
       transition: 0.4s; }
 
 .sc-event {
@@ -107,8 +107,6 @@
   background: #FFCF66 !important; }
 
 .sc {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   font-family: system-ui;
   font-size: 14px;
@@ -174,6 +172,7 @@
   font-size: 1em;
   position: relative; }
   .sc-cell:before {
+    display: none;
     content: '';
     position: absolute;
     z-index: 0;
@@ -185,14 +184,13 @@
     margin-top: -500vh;
     left: 0px;
     background: #00000005;
-    transition: 0.4s; }
+    transition: 0.4s;
+    border: 1px solid #00000008; }
   .sc-cell:hover:before {
+    display: block;
     opacity: 1; }
   .sc-cell.working {
     background: #ffffffa1; }
-
-.sc-resource {
-  min-width: 150px !important; }
 
 .sticky-y {
   position: sticky !important;

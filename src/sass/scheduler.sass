@@ -3,8 +3,6 @@
 @import "popup.sass"
 @import "event.sass"
 .sc
-  display: flex
-  flex-direction: column
   width: 100%
   font-family: $default-font-family
   font-size: $text-md
@@ -69,6 +67,7 @@
   font-size: 1em
   position: relative
   &:before
+    display: none
     content: ''
     position: absolute
     z-index: 0
@@ -81,14 +80,13 @@
     left: 0px
     background: #00000005
     transition: 0.4s
+    border: 1px solid #00000008
   &:hover
     &:before
+      display: block
       opacity: 1
   &.working
     background: #ffffffa1
-
-.sc-resource
-  min-width: 150px !important
 
 .sticky-y
   position: sticky !important
