@@ -21,11 +21,9 @@ function ResourceCells(props) {
   }
 
   return props.items.map(function (section, i) {
-    //const alt = `${moment(section[0]).format('HH:mm')} - ${moment(section[1]).format('HH:mm')}`;
     var classes = ['sc-cell'];
     if (checkSectionWorkingTime(section)) classes.push('working');
     return /*#__PURE__*/_react["default"].createElement("div", {
-      //title={alt}
       key: "cell_".concat(props.resource.id, "_").concat(i),
       className: classes.join(' ')
     });

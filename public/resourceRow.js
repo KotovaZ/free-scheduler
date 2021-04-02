@@ -7,8 +7,6 @@ exports["default"] = ResourceRow;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _moment = _interopRequireDefault(require("moment"));
-
 var _event = _interopRequireDefault(require("./event"));
 
 var _resourceCells = _interopRequireDefault(require("./resourceCells"));
@@ -51,7 +49,7 @@ function ResourceRow(props) {
 
 var sortEvents = function sortEvents(a, b) {
   var diff = a.start - b.start;
-  var diff2 = a.id - b.id;
+  var diff2 = a.finish - b.finish;
   return diff == 0 ? diff2 > 0 ? 1 : -1 : diff > 0 ? 1 : -1;
 };
 

@@ -11,14 +11,12 @@ export default function ResourceCells(props) {
 
   return (
     props.items.map((section, i) => {
-      //const alt = `${moment(section[0]).format('HH:mm')} - ${moment(section[1]).format('HH:mm')}`;
       let classes = ['sc-cell'];
       if (checkSectionWorkingTime(section))
         classes.push('working');
 
       return (
         <div
-          //title={alt}
           key={`cell_${props.resource.id}_${i}`}
           className={classes.join(' ')}
         >

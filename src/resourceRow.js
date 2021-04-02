@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 import Event from "./event";
 import ResourceCells from "./resourceCells";
 
@@ -24,7 +23,7 @@ export default function ResourceRow(props) {
 
 let sortEvents = (a, b) => {
   const diff = a.start - b.start;
-  const diff2 = a.id - b.id;
+  const diff2 = a.finish - b.finish;
   return diff == 0 ? (diff2 > 0 ? 1 : -1) : diff > 0 ? 1 : -1;
 };
 
