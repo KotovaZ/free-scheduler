@@ -1,11 +1,15 @@
 import React from "react";
 import moment from "moment";
+import Config from "../config";
 import ResourceRow from "./resourceRow";
 import Resource from "./resource";
 
 export default function Scheduler(props) {
+  const ScheduleConfig = new Config(props.config);
+  const [config, setConfig] = React.useState(ScheduleConfig);
+  const [cellWidth, setCellWidth] = React.useState(config.cellWidth);
+
   let res = initResources(props.resources);
-  const [sections, setSections] = React.useState([]);
   const [resources, setResources] = React.useState(res);
 
   function initResources() {
@@ -19,33 +23,32 @@ export default function Scheduler(props) {
     this.setRef = (ref) => {
       this.ref = ref;
     }
-    this.base = <Resource key={`${res.id}`} {...res} setRef={this.setRef} config={props.config.resource} />;
+    this.base = <Resource key={`${res.id}`} {...res} setRef={this.setRef} config={config.resource} />;
     return this;
   }
 
   React.useEffect(() => {
-    const steps = Math.ceil((props.config.end - props.config.start) / props.config.interval);
-    let result = [];
-    let startPoint = props.config.start.getTime();
-    for (let i = 0; i < steps; i++) {
-      result.push([new Date(startPoint + props.config.interval * i), new Date(startPoint + props.config.interval * (i + 1))]);
-    }
-    setSections(result);
-  }, [props.config.end, props.config.start]);
+    setConfig(new Config(props.config));
+  }, [props.config]);
 
   React.useEffect(() => {
     let res = initResources(props.resources);
     setResources(res);
   }, [props.resources]);
 
+  React.useEffect(() => {
+    setCellWidth(config.cellWidth);
+  }, [config]);
+
   const header = () => {
-    return sections.map((section, i) => {
-      return (
-        <div key={`column_${i}`} className="sc-cell">
-          <span>{moment(section[0]).format("DD.MM HH:mm").replace(" ", "\n")}</span>
-        </div>
-      );
-    });
+    return config.timeLine.sections
+      .map((section, i) => {
+        return (
+          <div key={`column_${i}`} className="sc-cell" style={{ minWidth: `${cellWidth}px` }}>
+            <span>{moment(section[0]).format(config.dateFormat).replace(" ", "\n")}</span>
+          </div>
+        );
+      });
   };
 
   const body = () => {
@@ -57,8 +60,9 @@ export default function Scheduler(props) {
           events={props.events.filter(
             (event) => event.resourceId === resource.id
           )}
-          sections={sections}
-          config={props.config}
+          sections={config.timeLine.sections}
+          config={config}
+          cellWidth={cellWidth}
         />
       );
     });
@@ -72,8 +76,8 @@ export default function Scheduler(props) {
     <div className="sc">
       <div className="sc-table">
         <div className="sc-row sc-header sticky-y">
-          <div className="sc-cell sc-resource" style={{ minWidth: props.config.resource.width }}>
-            <span>{props.config.resource.title}</span>
+          <div className="sc-cell sc-resource" style={{ minWidth: `${config.resource.width}px` }}>
+            <span>{config.resource.title}</span>
           </div>
           {header()}
         </div>

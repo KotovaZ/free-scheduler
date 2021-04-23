@@ -48,12 +48,14 @@ function ResourceRow(props) {
 }
 
 var sortEvents = function sortEvents(a, b) {
-  const diff = a.start - b.start;
+  var diff = a.start - b.start;
+
   if (diff == 0) {
-    const diff2 = b.finish - a.finish;
+    var diff2 = b.finish - a.finish;
+
     if (diff2 == 0) {
-      const diff3 = a.id - b.id;
-      return diff3 > 0 ? 1 : -1
+      var diff3 = a.id - b.id;
+      return diff3 > 0 ? 1 : -1;
     } else {
       return diff2 > 0 ? 1 : -1;
     }

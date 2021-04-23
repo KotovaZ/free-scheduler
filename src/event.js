@@ -1,64 +1,41 @@
-import React from "react";
-import moment from "moment";
-import Popup from 'reactjs-popup';
+export default class Event {
+  collision = [];
+  timeCrossing = 0;
+  row = 0;
+  view = {
+    width: 0,
+    height: 20,
+  };
+  position = {
+    left: 0,
+    top: 0,
+  };
 
-export default function Event(props) {
-  let type = props.hasOwnProperty('type') ? props.type : 'default';
-  let handlers = {};
-
-  if (props.hasOwnProperty('onClick')) {
-    handlers.onClick = function () { props.onClick(props) };
+  constructor(data, timeline) {
+    Object.assign(this, { ...data, timeline });
+    this.start = this.date(data.start);
+    this.finish = this.date(data.finish);
+    Object.assign(this, this.timeline.getTimeCrossing(this.start, this.finish));
+    this.view.width = this.width;
+    this.position.left = this.startPosition;
+    //console.log(this.startPosition);
   }
 
-  const popupTitle = () => {
-    let start = moment(props.start);
-    let finish = moment(props.finish);
-    if (start.get('D') == finish.get('D')) {
-      return (
-        <div className='popup-title'>
-          <div className='range info-text'>
-            {moment(props.start).format('HH:mm')} - {moment(props.finish).format('HH:mm')}
-          </div>
-          {moment(props.start).format('DD.MM.Y')}
-        </div>
-      );
+  get width() {
+    if (this.timeline.config.byWorkTime) {
+      return 100 * (this.timeCrossing) / (this.timeline.period * this.timeline.hours / 24);
     } else {
-      return (
-        <div className='popup-title'>
-          <div className='range'>
-            <span className='info-text'>{moment(props.start).format('HH:mm')}</span> {moment(props.start).format('DD.MM')}
-            <span className='info-text'> - </span>
-            <span className='info-text'>{moment(props.finish).format('HH:mm')}</span> {moment(props.finish).format('DD.MM')}
-          </div>
-        </div>
-      );
+      return 100 * ((this.finish > this.timeline.config.end ? this.timeline.config.end : this.finish) -
+        (this.start < this.timeline.config.start ? this.timeline.config.start : this.start)) /
+        this.timeline.period;
     }
   }
 
-  const eventForm = () => {
-    return (
-      <div
-        className={`sc-event sc-event-${type}`}
-        style={{
-          left: `${props.position.left}%`,
-          top: `${props.position.top}px`,
-          width: `${props.view.width}%`,
-        }}
-        {...handlers}
-      >
-        <span>
-          {props.name}
-        </span>
-      </div>
-    );
+  get duration() {
+    return this.finish - this.start;
   }
-  
-  return (
-    <Popup on='hover' trigger={eventForm} position={['bottom center', 'top center', 'bottom left']}>
-      {popupTitle()}
-      <div className='popup-body'>
-        {props.name}
-      </div>
-    </Popup>
-  );
+
+  date(dt) {
+    return typeof dt == "string" ? new Date(dt) : dt;
+  }
 }

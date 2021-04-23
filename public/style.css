@@ -136,9 +136,9 @@
   .sc ::-webkit-scrollbar-track {
     background: #fafafa; }
   .sc ::-webkit-scrollbar-thumb {
-    background: #e5e5e5; }
+    background: #e7e7e7; }
   .sc ::-webkit-scrollbar-thumb:hover {
-    background: #f1f1f1; }
+    background: #e7e7e7; }
 
 .sc-table {
   display: flex;
@@ -177,8 +177,6 @@
   z-index: 101 !important; }
 
 .sc-cell {
-  width: 90px;
-  min-width: 90px;
   padding: 4px 0;
   text-align: center;
   display: table-cell;
@@ -188,7 +186,10 @@
   height: 40px;
   vertical-align: middle;
   font-size: 1em;
-  position: relative; }
+  position: relative;
+  box-sizing: border-box; }
+  .sc-cell.start {
+    border-left: 1px solid #e7e7e7; }
   .sc-cell.working {
     background: #ffffffa1; }
 

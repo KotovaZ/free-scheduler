@@ -6,7 +6,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _scheduler = _interopRequireDefault(require("./scheduler"));
+var _scheduler = _interopRequireDefault(require("./components/scheduler"));
 
 require("./sass/scheduler.sass");
 
@@ -24,9 +24,13 @@ _reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(_sched
     end: new Date('2020-01-13 23:59:59'),
     interval: 3600000,
     resource: {
-      width: '200px',
+      width: 200,
       title: 'Пользователи'
-    }
+    },
+    parent: root,
+    adaptiveColumnWidth: true,
+    dateFormat: "DD.MM HH:mm",
+    byWorkTime: true
   },
   resources: demoData.resources,
   events: demoData.events

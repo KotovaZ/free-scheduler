@@ -15,7 +15,7 @@ var events = [{
   "resourceId": "3",
   "id": "651231",
   "name": "Дежурство",
-  "start": "2020-01-10T09:00:00+08:00",
+  "start": "2020-01-10T00:00:00+08:00",
   "finish": "2020-01-10T10:00:00+08:00",
   "type": "warning",
   "DATA": {
@@ -26,8 +26,8 @@ var events = [{
   "resourceId": "17",
   "id": "65",
   "name": "Дежурство",
-  "start": "2020-01-09T09:00:00+08:00",
-  "finish": "2020-01-09T18:00:00+08:00",
+  "start": "2020-01-09T00:00:00+08:00",
+  "finish": "2020-01-10T12:00:00+08:00",
   "type": "default",
   "DATA": {
     "PRIORITY": null,
@@ -92,7 +92,7 @@ var events = [{
   "resourceId": "17",
   "id": "716",
   "name": ">>: 08.06.2020 О начале открытого бета-тестирования новой версии продукта \"1С:Облачный архив\" до 03 августа 2020 г. и прекращение работы текущей ве",
-  "start": "2020-01-08T09:00:00+08:00",
+  "start": "2020-01-09T00:00:00+08:00",
   "finish": "2020-01-09T10:00:02+08:00",
   "type": "success",
   "DATA": {
@@ -1776,9 +1776,7 @@ function _checkWorkingTime(section, resId) {
   var eventList = events.filter(function (event) {
     return event.type == 'default' && event.resourceId == resId;
   });
-  var sectionDate = section.map(function (date) {
-    return date.getTime();
-  });
+  var sectionDate = [section[0].getTime(), section[1].getTime()];
 
   var _iterator = _createForOfIteratorHelper(eventList),
       _step;

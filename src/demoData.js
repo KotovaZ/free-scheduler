@@ -16,7 +16,7 @@ export const events = [
     "id": "65",
     "name": "Дежурство",
     "start": "2020-01-09T00:00:00+08:00",
-    "finish": "2020-01-09T18:00:00+08:00",
+    "finish": "2020-01-10T12:00:00+08:00",
     "type": "default",
     "DATA": {
       "PRIORITY": null,
@@ -1904,7 +1904,7 @@ export let resources = [
 
 function checkWorkingTime (section, resId) {
   let eventList = events.filter(event => event.type == 'default' && event.resourceId == resId);
-  const sectionDate = section.map(date => date.getTime());
+  const sectionDate = [section[0].getTime(), section[1].getTime()];
   for(let event of eventList) {
     const eventStart = (new Date(event.start)).getTime();
     const eventFinish = (new Date(event.finish)).getTime();

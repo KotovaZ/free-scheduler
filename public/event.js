@@ -3,69 +3,72 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = Event;
+exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-var _moment = _interopRequireDefault(require("moment"));
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-var _reactjsPopup = _interopRequireDefault(require("reactjs-popup"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function Event(props) {
-  var type = props.hasOwnProperty('type') ? props.type : 'default';
-  var handlers = {};
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  if (props.hasOwnProperty('onClick')) {
-    handlers.onClick = function () {
-      props.onClick(props);
-    };
+var Event = /*#__PURE__*/function () {
+  function Event(data, timeline) {
+    _classCallCheck(this, Event);
+
+    _defineProperty(this, "collision", []);
+
+    _defineProperty(this, "timeCrossing", 0);
+
+    _defineProperty(this, "row", 0);
+
+    _defineProperty(this, "view", {
+      width: 0,
+      height: 20
+    });
+
+    _defineProperty(this, "position", {
+      left: 0,
+      top: 0
+    });
+
+    Object.assign(this, _objectSpread(_objectSpread({}, data), {}, {
+      timeline: timeline
+    }));
+    this.start = this.date(data.start);
+    this.finish = this.date(data.finish);
+    Object.assign(this, this.timeline.getTimeCrossing(this.start, this.finish));
+    this.view.width = this.width;
+    this.position.left = this.startPosition; //console.log(this.startPosition);
   }
 
-  var popupTitle = function popupTitle() {
-    var start = (0, _moment["default"])(props.start);
-    var finish = (0, _moment["default"])(props.finish);
-
-    if (start.get('D') == finish.get('D')) {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        className: "popup-title"
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "range info-text"
-      }, (0, _moment["default"])(props.start).format('HH:mm'), " - ", (0, _moment["default"])(props.finish).format('HH:mm')), (0, _moment["default"])(props.start).format('DD.MM.Y'));
-    } else {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        className: "popup-title"
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: "range"
-      }, /*#__PURE__*/_react["default"].createElement("span", {
-        className: "info-text"
-      }, (0, _moment["default"])(props.start).format('HH:mm')), " ", (0, _moment["default"])(props.start).format('DD.MM'), /*#__PURE__*/_react["default"].createElement("span", {
-        className: "info-text"
-      }, " - "), /*#__PURE__*/_react["default"].createElement("span", {
-        className: "info-text"
-      }, (0, _moment["default"])(props.finish).format('HH:mm')), " ", (0, _moment["default"])(props.finish).format('DD.MM')));
-    }
-  };
-
-  var eventForm = function eventForm() {
-    return /*#__PURE__*/_react["default"].createElement("div", _extends({
-      className: "sc-event sc-event-".concat(type),
-      style: {
-        left: "".concat(props.position.left, "%"),
-        top: "".concat(props.position.top, "px"),
-        width: "".concat(props.view.width, "%")
+  _createClass(Event, [{
+    key: "width",
+    get: function get() {
+      if (this.timeline.config.byWorkTime) {
+        return 100 * this.timeCrossing / (this.timeline.period * this.timeline.hours / 24);
+      } else {
+        return 100 * ((this.finish > this.timeline.config.end ? this.timeline.config.end : this.finish) - (this.start < this.timeline.config.start ? this.timeline.config.start : this.start)) / this.timeline.period;
       }
-    }, handlers), /*#__PURE__*/_react["default"].createElement("span", null, props.name));
-  };
+    }
+  }, {
+    key: "duration",
+    get: function get() {
+      return this.finish - this.start;
+    }
+  }, {
+    key: "date",
+    value: function date(dt) {
+      return typeof dt == "string" ? new Date(dt) : dt;
+    }
+  }]);
 
-  return /*#__PURE__*/_react["default"].createElement(_reactjsPopup["default"], {
-    on: "hover",
-    trigger: eventForm,
-    position: ['bottom center', 'top center', 'bottom left']
-  }, popupTitle(), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "popup-body"
-  }, props.name));
-}
+  return Event;
+}();
+
+exports["default"] = Event;
