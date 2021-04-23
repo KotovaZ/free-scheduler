@@ -1,6 +1,6 @@
 export default class TimeLine {
   sections = [];
-  intervals = [];
+
   constructor(config) {
     this.config = config;
     this.setSections();
@@ -31,22 +31,24 @@ export default class TimeLine {
 
   getTimeCrossing(start, finish) {
     let result = { timeCrossing: 0, startPosition: false };
+    const startTime =  start < this.config.start ? this.config.start : start;
+    const finishTime =  finish > this.config.end ? this.config.end : finish;
 
     if (start < this.config.start && finish < this.config.start || start > this.config.end && finish > this.config.end) {
       return result;
     }
 
     if (!this.config.byWorkTime) {
-      result.timeCrossing = (finish > this.config.end ? this.config.end : finish) - (start < this.config.start ? this.config.start : start);
-      result.startPosition = this.getTimeMarkPosition(start);
+      result.timeCrossing = finishTime - startTime;
+      result.startPosition = this.getTimeMarkPosition(startTime);
       return result;
     }
 
-    const hours = (finish - start) / this.config.interval;
+    const hours = (finishTime - startTime) / this.config.interval;
     for (var i = 0; i < Math.round(hours); i++) {
-      var stepStart = new Date(start.getTime() + i * this.config.interval);
-      var stepFinish = new Date(start.getTime() + (i + 1) * this.config.interval);
-      stepFinish = stepFinish > finish ? finish : stepFinish;
+      var stepStart = new Date(startTime.getTime() + i * this.config.interval);
+      var stepFinish = new Date(startTime.getTime() + (i + 1) * this.config.interval);
+      stepFinish = stepFinish > finishTime ? finishTime : stepFinish;
 
       const start_inTimeLine = this.checkWorkingTime(stepStart);
       const finish_inTimeLine = this.checkWorkingTime(stepFinish);

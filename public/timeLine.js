@@ -19,8 +19,6 @@ var TimeLine = /*#__PURE__*/function () {
 
     _defineProperty(this, "sections", []);
 
-    _defineProperty(this, "intervals", []);
-
     this.config = config;
     this.setSections();
   }
@@ -57,23 +55,25 @@ var TimeLine = /*#__PURE__*/function () {
         timeCrossing: 0,
         startPosition: false
       };
+      var startTime = start < this.config.start ? this.config.start : start;
+      var finishTime = finish > this.config.end ? this.config.end : finish;
 
       if (start < this.config.start && finish < this.config.start || start > this.config.end && finish > this.config.end) {
         return result;
       }
 
       if (!this.config.byWorkTime) {
-        result.timeCrossing = (finish > this.config.end ? this.config.end : finish) - (start < this.config.start ? this.config.start : start);
-        result.startPosition = this.getTimeMarkPosition(start);
+        result.timeCrossing = finishTime - startTime;
+        result.startPosition = this.getTimeMarkPosition(startTime);
         return result;
       }
 
-      var hours = (finish - start) / this.config.interval;
+      var hours = (finishTime - startTime) / this.config.interval;
 
       for (var i = 0; i < Math.round(hours); i++) {
-        var stepStart = new Date(start.getTime() + i * this.config.interval);
-        var stepFinish = new Date(start.getTime() + (i + 1) * this.config.interval);
-        stepFinish = stepFinish > finish ? finish : stepFinish;
+        var stepStart = new Date(startTime.getTime() + i * this.config.interval);
+        var stepFinish = new Date(startTime.getTime() + (i + 1) * this.config.interval);
+        stepFinish = stepFinish > finishTime ? finishTime : stepFinish;
         var start_inTimeLine = this.checkWorkingTime(stepStart);
         var finish_inTimeLine = this.checkWorkingTime(stepFinish);
 

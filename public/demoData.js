@@ -13,6 +13,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var events = [{
   "resourceId": "3",
+  "id": "129646",
+  "name": "Провести разбор отрицательной оценки по обращению 123641",
+  "start": "2020-01-03T04:06:03+08:00",
+  "finish": "2020-01-09T08:00:03+08:00",
+  "type": "danger",
+  "DATA": {
+    "PRIORITY": null,
+    "STATUS": null
+  }
+}, {
+  "resourceId": "3",
   "id": "651231",
   "name": "Дежурство",
   "start": "2020-01-10T00:00:00+08:00",
@@ -27,7 +38,7 @@ var events = [{
   "id": "65",
   "name": "Дежурство",
   "start": "2020-01-09T00:00:00+08:00",
-  "finish": "2020-01-10T12:00:00+08:00",
+  "finish": "2020-01-09T08:00:00+08:00",
   "type": "default",
   "DATA": {
     "PRIORITY": null,
