@@ -63,6 +63,8 @@ export default class TimeLine {
 
       if (start_inTimeLine && result.startPosition === false) {
         result.startPosition = this.getTimeMarkPosition(stepStart);
+      } else if (finish_inTimeLine && result.startPosition === false) {
+        result.startPosition = 0;
       }
     }
 
