@@ -55,8 +55,8 @@ var TimeLine = /*#__PURE__*/function () {
         timeCrossing: 0,
         startPosition: false
       };
-      var startTime = start < this.config.start ? this.config.start : start;
-      var finishTime = finish > this.config.end ? this.config.end : finish;
+      var startTime = new Date(start < this.config.start ? this.config.start : start);
+      var finishTime = new Date(finish > this.config.end ? this.config.end : finish);
 
       if (start < this.config.start && finish < this.config.start || start > this.config.end && finish > this.config.end) {
         return result;
@@ -70,15 +70,20 @@ var TimeLine = /*#__PURE__*/function () {
 
       var hours = (finishTime - startTime) / this.config.interval;
 
-      for (var i = 0; i < Math.round(hours); i++) {
+      if (!this.checkWorkingTime(startTime)) {
+        startTime.setMinutes(0, 0, 0);
+      }
+
+      for (var i = 0; i < Math.ceil(hours); i++) {
         var stepStart = new Date(startTime.getTime() + i * this.config.interval);
         var stepFinish = new Date(startTime.getTime() + (i + 1) * this.config.interval);
         stepFinish = stepFinish > finishTime ? finishTime : stepFinish;
+        if (stepStart >= finishTime) break;
         var start_inTimeLine = this.checkWorkingTime(stepStart);
         var finish_inTimeLine = this.checkWorkingTime(stepFinish);
 
         if (start_inTimeLine && finish_inTimeLine) {
-          result.timeCrossing += this.config.interval;
+          result.timeCrossing += stepFinish - stepStart;
         } else if (finish_inTimeLine) {
           result.timeCrossing += stepFinish - new Date(stepFinish).setMinutes(0, 0, 0);
         } else if (start_inTimeLine) {
@@ -88,7 +93,16 @@ var TimeLine = /*#__PURE__*/function () {
         if (start_inTimeLine && result.startPosition === false) {
           result.startPosition = this.getTimeMarkPosition(stepStart);
         } else if (finish_inTimeLine && result.startPosition === false) {
-          result.startPosition = 0;
+          stepStart.setMinutes(0, 0, 0);
+
+          while (stepStart < stepFinish) {
+            stepStart.setHours(stepStart.getHours() + 1);
+
+            if (this.checkWorkingTime(stepStart)) {
+              result.startPosition = this.getTimeMarkPosition(stepStart);
+              break;
+            }
+          }
         }
       }
 
