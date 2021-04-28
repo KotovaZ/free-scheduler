@@ -74,11 +74,11 @@ var TimeLine = /*#__PURE__*/function () {
         startTime.setMinutes(0, 0, 0);
       }
 
-      for (var i = 0; i < Math.ceil(hours); i++) {
+      for (var i = 0; i < Math.ceil(hours) + 1; i++) {
         var stepStart = new Date(startTime.getTime() + i * this.config.interval);
+        if (stepStart >= finishTime) break;
         var stepFinish = new Date(startTime.getTime() + (i + 1) * this.config.interval);
         stepFinish = stepFinish > finishTime ? finishTime : stepFinish;
-        if (stepStart >= finishTime) break;
         var start_inTimeLine = this.checkWorkingTime(stepStart);
         var finish_inTimeLine = this.checkWorkingTime(stepFinish);
 
