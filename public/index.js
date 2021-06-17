@@ -30,7 +30,8 @@ _reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(_sched
     parent: root,
     adaptiveColumnWidth: true,
     dateFormat: "DD.MM HH:mm",
-    byWorkTime: true
+    byWorkTime: true,
+    showDayName: true
   },
   resources: demoData.resources,
   events: demoData.events

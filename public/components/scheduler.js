@@ -96,7 +96,9 @@ function Scheduler(props) {
         style: {
           minWidth: "".concat(cellWidth, "px")
         }
-      }, /*#__PURE__*/_react["default"].createElement("span", null, (0, _moment["default"])(section[0]).format(config.dateFormat).replace(" ", "\n")));
+      }, config.showDayName && /*#__PURE__*/_react["default"].createElement("div", {
+        className: "sc-subcell top sc-caption"
+      }, (0, _moment["default"])(section[0]).locale("ru").format('ddd')), /*#__PURE__*/_react["default"].createElement("span", null, (0, _moment["default"])(section[0]).format(config.dateFormat).replace(" ", "\n")));
     });
   };
 

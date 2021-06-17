@@ -204,3 +204,12 @@
   position: -webkit-sticky;
   left: 0px;
   z-index: 100; }
+
+.sc-subcell.top {
+  border-bottom: 1px solid #e7e7e7; }
+
+.sc-subcell.bottom {
+  border-top: 1px solid #e7e7e7; }
+
+.sc-caption {
+  text-transform: capitalize; }
