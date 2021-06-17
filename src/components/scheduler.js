@@ -45,6 +45,8 @@ export default function Scheduler(props) {
       .map((section, i) => {
         return (
           <div key={`column_${i}`} className="sc-cell" style={{ minWidth: `${cellWidth}px` }}>
+            {config.showDayName && 
+              <div className="sc-subcell top sc-caption">{moment(section[0]).locale("ru").format('ddd')}</div>}
             <span>{moment(section[0]).format(config.dateFormat).replace(" ", "\n")}</span>
           </div>
         );

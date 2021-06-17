@@ -16,7 +16,8 @@ ReactDOM.render(<Scheduler
     parent: root,
     adaptiveColumnWidth: true,
     dateFormat: "DD.MM HH:mm",
-    byWorkTime: true
+    byWorkTime: true,
+    showDayName: true
   }}
   resources={demoData.resources}
   events={demoData.events}

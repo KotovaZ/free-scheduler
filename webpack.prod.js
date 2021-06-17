@@ -10,7 +10,7 @@ module.exports = merge(common, {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.ContextReplacementPlugin(
       /moment[\/\\]locale$/,
-      /de|en/
+      /de|en|ru/
     )
   ],
 });
