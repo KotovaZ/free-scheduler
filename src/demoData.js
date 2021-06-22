@@ -223,6 +223,7 @@ export const events = [
     "start": "2020-01-09T15:00:00+08:00",
     "finish": "2020-01-09T16:00:00+08:00",
     "type": "success",
+    "link": "/desktop/ticket/850",
     "DATA": {
       "PRIORITY": null,
       "STATUS": null
@@ -247,6 +248,7 @@ export const events = [
     "start": "2020-01-09T16:00:00+08:00",
     "finish": "2020-01-09T17:00:00+08:00",
     "type": "success",
+    "link": "/desktop/ticket/852",
     "DATA": {
       "PRIORITY": null,
       "STATUS": null
@@ -919,6 +921,7 @@ export const events = [
     "start": "2020-01-09T13:00:24+08:00",
     "finish": "2020-01-09T14:00:24+08:00",
     "type": "success",
+    "link": "/desktop/ticket/1008",
     "DATA": {
       "PRIORITY": null,
       "STATUS": null

@@ -67,5 +67,9 @@ function Event(props) {
     position: ['bottom center', 'top center', 'bottom left']
   }, popupTitle(), /*#__PURE__*/_react["default"].createElement("div", {
     className: "popup-body"
-  }, props.name));
+  }, props.link ? /*#__PURE__*/_react["default"].createElement("a", {
+    className: "popup-link",
+    href: props.link,
+    target: "_blank"
+  }, props.name) : props.name));
 }

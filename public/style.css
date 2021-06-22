@@ -33,6 +33,11 @@
   color: #26A6E0;
   font-size: 16px !important; }
 
+.popup-link {
+  color: #26A6E0;
+  text-decoration: none;
+  outline: none; }
+
 @keyframes anvil {
   0% {
     transform: scale(1) translateY(0px);

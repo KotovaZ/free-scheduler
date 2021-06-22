@@ -56,7 +56,13 @@ export default function Event(props) {
     <Popup on='hover' trigger={eventForm} position={['bottom center', 'top center', 'bottom left']}>
       {popupTitle()}
       <div className='popup-body'>
-        {props.name}
+        {props.link ?
+          <a className="popup-link" href={props.link} target="_blank">
+            {props.name}
+          </a>
+          :
+          props.name
+        }
       </div>
     </Popup>
   );
