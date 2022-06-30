@@ -27,5 +27,5 @@ ReactDOM.render(<Scheduler
   events={demoData.events}
 />, document.getElementById('root'));
 ```
-<a href="https://kotovaz.github.io/free-scheduler/src/demoData.js">Demo data</>
+<a href="https://kotovaz.github.io/free-scheduler/src/demoData.js">Demo data</a>
 
